@@ -1,23 +1,23 @@
 Class {
-	#name : #IsogramTest,
+	#name : #StringExtensionsTest,
 	#superclass : #TestCase,
-	#category : #'OOP-Isogram-Tests'
+	#category : #'OOP-String-Extensions-Tests'
 }
 
 { #category : #'tests - fixture' }
-IsogramTest >> isograms [
+StringExtensionsTest >> isograms [
 	
 	^ #('sea' 'pharo' 'xavier' 'pathfinder')
 ]
 
 { #category : #'tests - fixture' }
-IsogramTest >> notIsograms [
+StringExtensionsTest >> notIsograms [
 	
 	^ #('' 'pharoao' 'seaside')
 ]
 
 { #category : #tests }
-IsogramTest >> testIsogramDetection [
+StringExtensionsTest >> testIsogramDetection [
 
 	self isograms do: [ :word | self assert: word isIsogram ].
 	self notIsograms do: [ :word | self deny: word isIsogram ]
