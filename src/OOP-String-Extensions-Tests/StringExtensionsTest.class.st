@@ -16,6 +16,34 @@ StringExtensionsTest >> notIsograms [
 	^ #('' 'pharoao' 'seaside')
 ]
 
+{ #category : #'tests - fixture' }
+StringExtensionsTest >> notPangrams [
+
+	^ #( 'The quick brown fox jumps over the dog' )
+]
+
+{ #category : #'tests - fixture' }
+StringExtensionsTest >> pangrams [
+
+	^ #( 'The quick brown fox jumps over the lazy dog' )
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testEnglishPangramDetection [
+
+	self pangrams do: [ :phrase | self assert: phrase isEnglishPangram ].
+	self notIsograms do: [ :phrase | self deny: phrase isEnglishPangram ]
+]
+
+{ #category : #tests }
+StringExtensionsTest >> testEnglishPangramInAlphabetDetection [
+
+	self assert:
+		('les poux papas et les poux pas papas' isPangramIn: 'apouxetl').
+	self deny:
+		('les poux papas et les poux pas papas' isPangramIn: String alphabet)
+]
+
 { #category : #tests }
 StringExtensionsTest >> testIsogramDetection [
 
