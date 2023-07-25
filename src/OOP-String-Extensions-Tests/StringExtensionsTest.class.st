@@ -29,6 +29,29 @@ StringExtensionsTest >> pangrams [
 ]
 
 { #category : #tests }
+StringExtensionsTest >> testDetectAllMissingLetter [
+
+	self
+		assert:
+			('the uick brown fox jumps over the lzy dog'
+				 detectAllMissingLettersFor: String alphabet)
+		equals: 'aq' asSet.
+	self
+		assert: ('the quick brown fox jumps over the lzy do'
+				 detectAllMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz')
+		equals: 'ag' asSet.
+	self
+		assert:
+			('the uick brwn fx jumps ver the lazy dg'
+				 detectAllMissingLettersFor: 'abcdefghijklmnopqrstuvwxyz')
+		equals: 'oq' asSet.
+	self
+		assert: ('the quick brown fox jumps over the lazy dog'
+				 detectAllMissingLettersFor: String alphabet)
+		equals: '' asSet
+]
+
+{ #category : #tests }
 StringExtensionsTest >> testDetectFirstMissingLetter [
 
 	self

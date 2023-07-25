@@ -7,6 +7,15 @@ String class >> alphabet [
 ]
 
 { #category : #'*OOP-String-Extensions' }
+String >> detectAllMissingLettersFor: anAlphabet [
+	"Return all missing letter to make a pangram of the receiver 
+	in the context of a given alphabet. 
+	Return empty array otherwise"
+
+	^ (anAlphabet reject: [ :letter | self includes: letter ]) asSet
+]
+
+{ #category : #'*OOP-String-Extensions' }
 String >> detectFirstMissingLetter: anAlphabet [
 	"Return the first missing letter to make a pangram of the receiver 
 	in the context of a given alphabet. 
