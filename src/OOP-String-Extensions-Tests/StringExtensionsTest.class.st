@@ -85,6 +85,15 @@ StringExtensionsTest >> testEnglishPangramInAlphabetDetection [
 ]
 
 { #category : #tests }
+StringExtensionsTest >> testIsPalindrome [
+
+	self assert: 'ete' isPalindrome.
+	self assert: 'kayak' isPalindrome.
+	self deny: 'etat' isPalindrome.
+	self assert: 'Elu par cette crapule' isPalindrome
+]
+
+{ #category : #tests }
 StringExtensionsTest >> testIsogramDetection [
 
 	self isograms do: [ :word | self assert: word isIsogram ].

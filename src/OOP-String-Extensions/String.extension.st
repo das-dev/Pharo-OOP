@@ -43,6 +43,14 @@ String >> isIsogram [
 ]
 
 { #category : #'*OOP-String-Extensions' }
+String >> isPalindrome [
+
+	| letters |
+	letters := self asLowercase reject: [ :letter | letter = Character space ].
+	^ letters = letters reverse
+]
+
+{ #category : #'*OOP-String-Extensions' }
 String >> isPangramIn: anAlphabet [
 	"Returns true is the receiver is a pangram i.e., that it uses all
 	the characters of a given alphabet."
