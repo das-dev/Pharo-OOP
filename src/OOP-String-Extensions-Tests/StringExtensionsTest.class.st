@@ -29,6 +29,23 @@ StringExtensionsTest >> pangrams [
 ]
 
 { #category : #tests }
+StringExtensionsTest >> testDetectFirstMissingLetter [
+
+	self
+		assert: ('the quick brown fox jumps over the lzy dog'
+				 detectFirstMissingLetter: String alphabet)
+		equals: $a.
+	self
+		assert: ('the uick brown fox jumps over the lazy dog'
+				 detectFirstMissingLetter: String alphabet)
+		equals: $q.
+	self
+		assert: ('the quick brown fox jumps over the lazy dog'
+				 detectFirstMissingLetter: String alphabet)
+		equals: Character space.
+]
+
+{ #category : #tests }
 StringExtensionsTest >> testEnglishPangramDetection [
 
 	self pangrams do: [ :phrase | self assert: phrase isEnglishPangram ].
