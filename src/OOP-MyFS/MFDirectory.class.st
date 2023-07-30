@@ -1,9 +1,7 @@
 Class {
 	#name : #MFDirectory,
-	#superclass : #Object,
+	#superclass : #MFElement,
 	#instVars : [
-		'parent',
-		'name',
 		'files'
 	],
 	#category : #'OOP-MyFS'
@@ -25,43 +23,25 @@ MFDirectory >> children [
 { #category : #initialization }
 MFDirectory >> initialize [
 
-	files := OrderedCollection new.
+	super initialize.
+	files := OrderedCollection new
 ]
 
 { #category : #accessing }
-MFDirectory >> name [
-
-	^ name
-]
-
-{ #category : #accessing }
-MFDirectory >> name: aString [
-
-	name := aString
-]
-
-{ #category : #accessing }
-MFDirectory >> parent [
-
-	^ parent
-]
-
-{ #category : #accessing }
-MFDirectory >> parent: aFile [
-
-	parent := aFile
+MFDirectory >> kind [
+	
+	^ 'directory'
 ]
 
 { #category : #printing }
 MFDirectory >> printOn: aStream [
 
-	parent ifNotNil: [ parent printOn: aStream ].
-	aStream << name.
+	super printOn: aStream.
 	aStream << '/'
 ]
 
 { #category : #api }
-MFDirectory >> serch: aString [
+MFDirectory >> search: aString [
 
 	^ files select: [ :file | file search: aString ]
 ]
@@ -69,6 +49,6 @@ MFDirectory >> serch: aString [
 { #category : #accessing }
 MFDirectory >> size [
 
-	^ name size
+	^ super size
 	  + (files inject: 0 into: [ :total :file | total + file size ]) + 2
 ]

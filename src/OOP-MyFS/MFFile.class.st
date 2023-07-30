@@ -1,9 +1,7 @@
 Class {
 	#name : #MFFile,
-	#superclass : #Object,
+	#superclass : #MFElement,
 	#instVars : [
-		'parent',
-		'name',
 		'contents'
 	],
 	#category : #'OOP-MyFS'
@@ -16,40 +14,16 @@ MFFile >> contents: aString [
 ]
 
 { #category : #initialization }
-MFFile >> initialize [ 
+MFFile >> initialize [
+
+	super initialize.
+	contents := ''
+]
+
+{ #category : #accessing }
+MFFile >> kind [
 	
-	contents := ''.
-]
-
-{ #category : #accessing }
-MFFile >> name [
-
-	^ name
-]
-
-{ #category : #accessing }
-MFFile >> name: aString [
-
-	name := aString
-]
-
-{ #category : #accessing }
-MFFile >> parent [
-
-	^ parent
-]
-
-{ #category : #accessing }
-MFFile >> parent: aFile [
-
-	parent := aFile
-]
-
-{ #category : #printing }
-MFFile >> printOn: aStream [
-	
-	parent ifNotNil: [ parent printOn: aStream ].
-	aStream << name.
+	^ 'file'
 ]
 
 { #category : #api }
@@ -60,6 +34,6 @@ MFFile >> search: aString [
 
 { #category : #accessing }
 MFFile >> size [
-	
-	^ name size + contents size.
+
+	^ super size + contents size
 ]
