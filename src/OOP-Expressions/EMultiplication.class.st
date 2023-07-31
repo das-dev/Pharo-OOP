@@ -1,33 +1,33 @@
 Class {
 	#name : #EMultiplication,
-	#superclass : #Object,
-	#instVars : [
-		'left',
-		'right'
-	],
+	#superclass : #EBinaryExpression,
 	#category : #'OOP-Expressions'
 }
 
-{ #category : #'public access' }
+{ #category : #sample }
+EMultiplication class >> fiveTimesThree [
+
+	<sampleInstance>
+	^ self new
+		  left: (EConstant new value: 5);
+		  right: (EConstant new value: 3)
+]
+
+{ #category : #api }
 EMultiplication >> evaluate [
 	
 	^ left evaluate * right evaluate
 ]
 
-{ #category : #accessing }
-EMultiplication >> left: anObject [
+{ #category : #api }
+EMultiplication >> evaluateWith: aCollection [
 
-	left := anObject
+	^ (left evaluateWith: aCollection)
+	  * (right evaluateWith: aCollection)
 ]
 
-{ #category : #arithmetic }
-EMultiplication >> negated [
+{ #category : #printing }
+EMultiplication >> operatorString [
 
-	^ EConstant new value: self evaluate negated
-]
-
-{ #category : #accessing }
-EMultiplication >> right: anObject [
-
-	right := anObject
+	^ ' * '
 ]

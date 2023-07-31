@@ -1,22 +1,48 @@
 Class {
 	#name : #EConstant,
-	#superclass : #Object,
+	#superclass : #EExpression,
 	#instVars : [
 		'value'
 	],
 	#category : #'OOP-Expressions'
 }
 
-{ #category : #'public access' }
+{ #category : #sample }
+EConstant class >> constant3 [
+
+	<sampleInstance>
+	^ self new value: 3
+]
+
+{ #category : #sample }
+EConstant class >> constant5 [
+
+	<sampleInstance>
+	^ self new value: 5
+]
+
+{ #category : #creation }
+EConstant class >> value: aNumber [
+	
+	^ self new value: aNumber 
+]
+
+{ #category : #api }
 EConstant >> evaluate [
 	
 	^ value
 ]
 
-{ #category : #arithmetic }
-EConstant >> negated [
+{ #category : #api }
+EConstant >> evaluateWith: aCollection [
+	
+	^ value
+]
 
-	^ ENegation new expression: self
+{ #category : #printing }
+EConstant >> printOn: aStream [
+
+	aStream nextPutAll: value asString
 ]
 
 { #category : #accessing }

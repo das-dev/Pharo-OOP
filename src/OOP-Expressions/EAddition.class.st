@@ -1,33 +1,33 @@
 Class {
 	#name : #EAddition,
-	#superclass : #Object,
-	#instVars : [
-		'left',
-		'right'
-	],
+	#superclass : #EBinaryExpression,
 	#category : #'OOP-Expressions'
 }
 
-{ #category : #'public access' }
+{ #category : #sample }
+EAddition class >> fivePlusThree [
+
+	<sampleInstance>
+	^ self new
+		  left: (EConstant new value: 5);
+		  right: (EConstant new value: 3)
+]
+
+{ #category : #api }
 EAddition >> evaluate [
 
 	^ left evaluate + right evaluate
 ]
 
-{ #category : #accessing }
-EAddition >> left: anObject [
+{ #category : #api }
+EAddition >> evaluateWith: aCollection [
 
-	left := anObject
+	^ (left evaluateWith: aCollection)
+	  + (right evaluateWith: aCollection)
 ]
 
-{ #category : #arithmetic }
-EAddition >> negated [
+{ #category : #printing }
+EAddition >> operatorString [
 
-	^ EConstant new value: self evaluate negated
-]
-
-{ #category : #accessing }
-EAddition >> right: anObject [
-
-	right := anObject
+	^ ' + '
 ]
